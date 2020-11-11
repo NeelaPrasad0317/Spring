@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="wmg" class="com.nnp.beans.WishMessageGenerator">
+		<constructor-arg ref="dt" name="date" />
+		<!-- <constructor-arg name="n" value="Neela"/> -->
+		<property name="date" ref="dt" />
+		<!-- <constructor-arg name="n" value="123"/> -->
+	</bean>
+
+	<bean id="dt" class="java.util.Date">
+		<property name="year">
+			<value>20</value>
+		</property>
+		<property name="month" value="06" />
+		<property name="date" value="10" />
+	</bean>
+
+
+</beans>

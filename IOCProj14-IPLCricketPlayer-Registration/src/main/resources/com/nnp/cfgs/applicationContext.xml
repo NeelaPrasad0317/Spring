@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- configure oracle datasouce -->
+	<bean id="oraDrds"	class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:orcl"/>
+		<property name="username" value="scott"/>
+		<property name="password" value="tiger"/>
+	</bean>
+
+	<!-- configure mysql datasource -->
+	<bean id="mysqlDrds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql:///spring"/>
+		<!-- <property name="url" value="jdbc:mysql://108.0.2.127:3036/SpringDB"/> -->
+		<property name="username" value="root"/>
+		<property name="password" value="root"/>
+	</bean>
+	
+	<!--configure Oracle DAO class  -->
+	<bean id="oraDao" class="com.nnp.dao.OraclePlayerRegDAOImpl">
+		<constructor-arg ref="oraDrds"/>
+	</bean>
+	
+	<!-- configure mysqlDAO -->
+	<bean id="mysqlDao" class="com.nnp.dao.MysqlPlayerRegDAOImpl">
+		<constructor-arg ref="mysqlDrds"/>
+	</bean>
+	
+	<!-- configure service -->
+	<bean id="service" class="com.nnp.service.PlayerRegMgmtServiceImpl">
+<!-- 		<constructor-arg ref="oraDao"/> -->
+		<constructor-arg ref="mysqlDao"/>
+	</bean>
+	
+	
+	<!-- configure controller -->
+	<bean id="controller" class="com.nnp.controller.MainController">
+		<constructor-arg ref="service" />
+	</bean>
+</beans>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="hkcp" class="com.zaxxer.hikari.HikariDataSource" abstract="true">
+		<property name="maximumPoolSize" value="10"/>
+		<property name="minimumIdle" value="2"/>
+		<property name="idleTimeout" value="20000"/>
+	</bean>
+	
+<!-- 	oracle hkcp cfg -->
+	<bean id="oraHkcp" class="com.zaxxer.hikari.HikariDataSource" parent="hkcp" primary="true">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:orcl"/>
+		<property name="username" value="scott"/>
+		<property name="password" value="tiger"/>
+	</bean>
+	
+<!-- 	mysql hkcp cfg -->
+	<bean id="mysqlHkcp" class="com.zaxxer.hikari.HikariDataSource" parent="hkcp" >
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+		<property name="jdbcUrl" value="jdbc:mysql:///spring"/>
+		<property name="username" value="root"/>
+		<property name="password" value="root"/>
+	</bean>
+	
+<!-- 	Employee DAO cfg -->
+	<bean id="oraDao" class="com.nnp.dao.EmployeeDAOImpl" autowire="constructor"/>
+	
+<!-- 	Employee Service cfg -->
+	<bean id="empService" class="com.nnp.service.EmployeeMgmtServiceImpl" autowire="constructor"/>
+	
+</beans>

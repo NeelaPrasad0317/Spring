@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<context:component-scan base-package="com.nnp"/>
+	<context:property-placeholder location="com/nnp/commons/jdbc.properties"/>
+
+	<bean id="hkds" class="com.zaxxer.hikari.HikariDataSource">
+		<property name="driverClassName" value="${jdbc.driver}"/>
+		<property name="jdbcUrl" value="${jdbc.url}"/>
+		<property name="username" value="${jdbc.user}"/>
+		<property name="password" value="${jdbc.pass}"/>
+		<property name="maximumPoolSize" value="${jdbc.max}"/>
+		<property name="minimumIdle" value="${jdbc.minIdle}"/>
+		<property name="idleTimeout" value="${jdbc.timeout}"/>
+	</bean>
+	
+<!-- 	template -->
+	<bean id="jt" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="hkds"/>
+	</bean>
+	
+</beans>

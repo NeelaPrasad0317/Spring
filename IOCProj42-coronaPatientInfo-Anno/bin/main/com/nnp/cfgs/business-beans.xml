@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<context:property-placeholder location="com/nnp/commons/jdbc.properties"/>
+
+	<context:component-scan base-package="com.nnp"/>
+<!-- ds cfg -->
+	<bean id="hkcpds" class="com.zaxxer.hikari.HikariDataSource" >
+		<property name="driverClassName" value="${driver}"/>
+		<property name="jdbcUrl" value="${url}"/>
+		<property name="username" value="${user}"/>
+		<property name="password" value="${pwd}"/>
+		<property name="maximumPoolSize" value="${poolsize}"/>
+		<property name="idleTimeout" value="${idletime}"/>
+		<property name="minimumIdle" value="${idle}"/>
+	</bean>
+
+<!-- dao config
+	<bean id="cdao" class="com.nnp.dao.CoronaPatientDAOImpl">
+		<constructor-arg ref="hkcpds"/>
+	</bean>
+
+service config
+	<bean id="service" class="com.nnp.service.CoronaPatientMgmtServiceImpl">
+		<constructor-arg ref="cdao"/>
+	</bean> -->
+
+</beans>

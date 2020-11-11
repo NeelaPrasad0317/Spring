@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+	<bean id="bat" class="com.nnp.beans.CricketBat"/>
+	<bean id="ball" class="com.nnp.beans.CricketBall"/>
+	<bean id="kg" class="com.nnp.beans.KeepingGloves"/>
+	<bean id="ckt" class="com.nnp.beans.Cricket">
+		<property name="ball" ref="ball"/>
+	</bean>
+</beans>

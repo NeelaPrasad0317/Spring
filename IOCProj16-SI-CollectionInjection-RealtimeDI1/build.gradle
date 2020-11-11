@@ -1,0 +1,36 @@
+plugins {
+    id 'application'
+}
+jar{
+	manifest{
+	 attributes 'Main-Class':'com.sp.test.RealTimeDITest'
+	}
+}
+mainClassName= "com.sp.test.RealTimeDITest"
+run{
+ standardInput=System.in
+ }
+ sourceSets{
+ 	main{
+ 		resources{
+ 			srcDirs=["src/main/java"]
+ 			includes=["**/*.xml"]
+ 		}
+ 	}
+ }
+
+repositories {
+   mavenCentral()
+}
+
+dependencies {
+
+// https://mvnrepository.com/artifact/org.springframework/spring-context-support
+implementation group: 'org.springframework', name: 'spring-context-support', version: '5.2.7.RELEASE'
+
+    // https://mvnrepository.com/artifact/org.springframework/spring-jdbc
+implementation group: 'org.springframework', name: 'spring-jdbc', version: '5.2.8.RELEASE'
+    
+    // https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc6
+implementation group: 'com.oracle.database.jdbc', name: 'ojdbc6', version: '11.2.0.4'
+}

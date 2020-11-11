@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--Configure dataSource  -->
+	<bean id='drds'
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:orcl"/>
+		<property name="username" value="scott"/>
+		<property name="password" value="tiger"/>
+	</bean>
+	
+	<!--configure DAO class  -->
+	<bean id='custDAO' class="com.sp.dao.CustomerDAOImpl">
+		<constructor-arg ref="drds" />
+	</bean>
+	
+	 <!--configure service class  -->
+	<bean id="custServ" class="com.sp.service.CustomerMgmtServiceImpl">
+		<constructor-arg ref="custDAO1"/>
+	</bean> 
+	
+	<!--configure controller class  -->
+	<bean id="controller" class="com.sp.controller.MainController">
+		<constructor-arg>
+			<!--configure service class  -->
+			<bean class="com.sp.service.CustomerMgmtServiceImpl">
+				<constructor-arg ref="custDAO" />
+			</bean>
+		</constructor-arg>
+	</bean>
+
+</beans>

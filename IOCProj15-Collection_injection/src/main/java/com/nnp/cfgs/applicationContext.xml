@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!--MarksClass -->
+	<bean id="marks" class="com.nnp.comps.MarksInfo">
+		<constructor-arg>
+			<array>
+				<value>90</value>
+				<value>95</value>
+				<value>85</value>
+			</array>
+		</constructor-arg>
+	</bean>
+
+	<!-- College -->
+	<bean id="clg" class="com.nnp.comps.College">
+		<property name="names">
+			<list>
+				<value>neela</value>
+				<value>prasad</value>
+				<value>nagineni</value>
+			</list>
+		</property>
+		<property name="dates">
+			<list>
+				<ref bean="dob" />
+				<ref bean="today" />
+				<!-- <ref <null/> /> -->
+			</list>
+		</property>
+	</bean>
+
+	<!-- Dates -->
+	<bean id="dob" class="java.util.Date">
+		<property name="date" value="10" />
+		<property name="month" value="6" />
+		<property name="year" value="96" />
+	</bean>
+	<bean id="today" class="java.util.Date" />
+
+	<!-- ContactsInfo -->
+	<bean id="cinfo" class="com.nnp.comps.ContactsInfo">
+		<!-- <constructor-arg name="dates"> <set value-type="java.util.Date"> <ref 
+			bean="dob"/> <ref bean="today"/> <ref><null /></ref> </set> </constructor-arg> -->
+		<constructor-arg name="dates">
+			<null />
+		</constructor-arg>
+		<constructor-arg name="phnos">
+			<set>
+				<value>9642664108</value>
+				<value>7981609974</value>
+				<value>7981609974</value>
+			</set>
+		</constructor-arg>
+	</bean>
+
+	<!-- University info -->
+	<bean id="uinfo" class="com.nnp.comps.UniversityInfo">
+		<constructor-arg name="faculty">
+			<map>
+				<entry>
+					<key>
+						<value>101</value>
+					</key>
+					<value>Neela</value>
+				</entry>
+				<entry key="102" value="prasad" />
+				<entry key="102" value="prasad" />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="dates">
+			<map>
+				<entry key="dob" value-ref="dob" />
+				<entry key="Today" value-ref="today" />
+				<entry key="null" ><null/></entry>
+			</map>
+		</constructor-arg>
+	</bean>
+
+	<!-- FruitSalad -->
+	<bean id="fruits" class="com.nnp.comps.FruitsInfo">
+		<constructor-arg>
+			<props>
+			<prop key="orange">orange</prop>
+			<prop key="Mango">Yellow</prop>
+			<prop key="Apple">red</prop>
+			</props>
+		</constructor-arg>
+	</bean>
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

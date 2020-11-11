@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="bDart" class="com.nnp.comp.BlueDart"/>
+	<bean id="DTDC" class="com.nnp.comp.DTDC"/>
+	<bean id="fFlight" class="com.nnp.comp.FirstFlight"/>
+	<bean id="fpkt" class="com.nnp.comp.Flipkart">
+		<constructor-arg ref="DTDC"/>
+	</bean>
+</beans>

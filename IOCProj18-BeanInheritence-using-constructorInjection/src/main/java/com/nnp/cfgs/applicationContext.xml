@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="car" class="com.nnp.comps.Car" abstract="true">
+		<constructor-arg name="company" value="suzuki" />
+		<constructor-arg name="engineCC" value="2400" />
+		<constructor-arg name="fuelType" value="petrol" />
+		<constructor-arg name="model" value="shift" />
+		<constructor-arg name="onwer" value="nnp" />
+		<constructor-arg name="type" value="hatchBack" />
+<!-- 		<constructor-arg></constructor-arg> -->
+<!-- 		<constructor-arg></constructor-arg> -->
+<!-- 		<constructor-arg></constructor-arg> -->
+	</bean>
+
+	<bean id="car1" class="com.nnp.comps.Car"	parent="car" >
+		<constructor-arg name="regNo" value="AP03A101" />
+		<constructor-arg name="color" value="red" />
+		<constructor-arg name="engineNo" value="1234567890" />
+	</bean>
+
+	<bean id="car2" class="com.nnp.comps.Car" parent="car">
+		<constructor-arg name="color" value="white" />
+		<constructor-arg name="engineNo" value="0987654321" />
+		<constructor-arg name="regNo" value="AP03A102" />
+	</bean>
+</beans>

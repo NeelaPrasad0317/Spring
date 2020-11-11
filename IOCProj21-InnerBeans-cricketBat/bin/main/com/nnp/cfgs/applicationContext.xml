@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+	<bean id="kohli" class="com.nnp.beans.ProfCricketer">
+		<constructor-arg value="Kohli"/>
+		<constructor-arg><bean id="bat" class="com.nnp.beans.ProfBat"/></constructor-arg>
+	</bean>
+	
+	<bean id="msd" class="com.nnp.beans.ProfCricketer">
+		<constructor-arg value="Dhoni"/>
+		<constructor-arg><bean class="com.nnp.beans.ProfBat"/></constructor-arg>
+	</bean>
+
+</beans>

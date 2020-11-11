@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans default-merge="true"
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+
+	<bean id="1stYear" class="com.nnp.comps.EnggCourses"		abstract="true">
+		<constructor-arg name="subjects">
+			<set>
+				<value>English</value>
+				<value>Physics</value>
+				<value>Chemistry</value>
+				<value>Drawing</value>
+				<value>C</value>
+				<value>M1</value>
+			</set>
+		</constructor-arg>
+	</bean>
+
+	<!-- <bean id="mech" class="com.nnp.comps.EnggCourses" parent="1stYear">
+		<constructor-arg name="subjects">
+			<set>
+				<value>ThermoDynamics</value>
+				<value>Mechanics</value>
+				<value>MachineDrawing</value>
+			</set>
+		</constructor-arg>
+	</bean> -->
+	
+	<bean class="com.nnp.comps.EnggCourses" parent="1stYear">
+		<constructor-arg name="subjects">
+			<set>
+				<value>ThermoDynamics</value>
+				<value>Mechanics</value>
+				<value>MachineDrawing</value>
+			</set>
+		</constructor-arg>
+	</bean>
+	
+	<bean class="com.nnp.comps.EnggCourses" parent="1stYear">
+		<constructor-arg name="subjects">
+			<set>
+				<value>SM</value>
+				<value>sorveying</value>
+				<value>concrete</value>
+			</set>
+		</constructor-arg>
+	</bean><bean class="com.nnp.comps.EnggCourses" parent="1stYear">
+		<constructor-arg name="subjects">
+			<set>
+				<value>circure</value>
+				<value>chips</value>
+			</set>
+		</constructor-arg>
+	</bean>
+	
+</beans>
+
